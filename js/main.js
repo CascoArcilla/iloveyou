@@ -12,12 +12,15 @@ function outHola() {
   principal.removeEventListener("animationend", outHola);
 
   setTimeout(() => {
-    principal.classList.add("animate__animated", "animate__lightSpeedOutRight");
+    principal.addEventListener("animationend", () => {
+      hiddenElemment(principal, document.getElementById("my-love"));
+    });
 
     setTimeout(() => {
-      principal.addEventListener("animationend", () => {
-        hiddenElemment(principal, document.getElementById("my-love"));
-      });
+      principal.classList.add(
+        "animate__animated",
+        "animate__lightSpeedOutRight"
+      );
     }, 1000);
   }, 1000);
 }
